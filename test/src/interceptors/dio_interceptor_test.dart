@@ -26,10 +26,13 @@ void main() {
   );
 
   setUpAll(() {
+
     _dio.interceptors.add(ChuckerDioInterceptor());
     _dioAdapter = DioAdapter(dio: _dio);
     _dio.httpClientAdapter = _dioAdapter;
-    _sharedPreferencesManager = SharedPreferencesManager.getInstance();
+    _sharedPreferencesManager = SharedPreferencesManager.getInstance(
+    initData: false,
+    );
 
     _dioAdapter
       ..onGet(_successPath, (s) => s.reply(200, _mockedSuccessResponse))

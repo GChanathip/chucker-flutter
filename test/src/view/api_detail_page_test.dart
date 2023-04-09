@@ -10,7 +10,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
-  final _sharedPreferencesManager = SharedPreferencesManager.getInstance();
+  final sharedPreferencesManager = SharedPreferencesManager.getInstance(
+    initData: false,
+  );
   testWidgets(
     'When page opened, three tabs should be loaded',
     (WidgetTester tester) async {
@@ -159,7 +161,7 @@ void main() {
         body: {'data': 'https://example.png'},
       );
 
-      await _sharedPreferencesManager.addApiResponse(api);
+      await sharedPreferencesManager.addApiResponse(api);
 
       await tester.pumpWidget(
         MaterialApp(
@@ -196,7 +198,7 @@ void main() {
         body: {'data': 'https://example.png'},
       );
 
-      await _sharedPreferencesManager.addApiResponse(api);
+      await sharedPreferencesManager.addApiResponse(api);
 
       await tester.pumpWidget(
         MaterialApp(

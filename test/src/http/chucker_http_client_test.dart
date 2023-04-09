@@ -34,8 +34,10 @@ void main() {
   late final SharedPreferencesManager _sharedPreferencesManager;
 
   setUpAll(() {
+
     _client = ChuckerHttpClient(_mockClient);
-    _sharedPreferencesManager = SharedPreferencesManager.getInstance(initData: false,
+    _sharedPreferencesManager = SharedPreferencesManager.getInstance(
+    initData: false,
     );
     _myChuckerHttpClient = _MyChuckerHttpClient(_mockClient);
   });

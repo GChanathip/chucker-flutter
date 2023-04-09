@@ -10,7 +10,9 @@ void main() {
   late final SharedPreferencesManager _sharedPreferencesManager;
 
   setUpAll(() {
-    _sharedPreferencesManager = SharedPreferencesManager.getInstance();
+    _sharedPreferencesManager = SharedPreferencesManager.getInstance(
+    initData: false,
+    );
   });
 
   testWidgets(
