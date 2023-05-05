@@ -52,7 +52,8 @@ void main() {
 
       expect(responses.length, 1);
       expect(responses.first.statusCode, 200);
-      expect(responses.first.body, {'data': _mockedSuccessResponse});
+      expect(responses.first.body, _mockedSuccessResponse);
+
     },
   );
 
@@ -68,7 +69,7 @@ void main() {
 
     expect(responses.length, 1);
     expect(responses.first.statusCode, 400);
-    expect(responses.first.body, {'data': _mockedErrorResponse});
+    expect(responses.first.body, _mockedErrorResponse);
   });
 
   test(

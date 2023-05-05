@@ -35,7 +35,8 @@ void main() {
 
   setUpAll(() {
     _client = ChuckerHttpClient(_mockClient);
-    _sharedPreferencesManager = SharedPreferencesManager.getInstance();
+    _sharedPreferencesManager = SharedPreferencesManager.getInstance(initData: false,
+    );
     _myChuckerHttpClient = _MyChuckerHttpClient(_mockClient);
   });
   test('Response should be saved in shared preferences when call succeeds',
@@ -47,7 +48,7 @@ void main() {
 
     expect(responses.length, 1);
     expect(responses.first.statusCode, 200);
-    expect(responses.first.body, {'data': _mockedSuccessResponse});
+    expect(responses.first.body, _mockedSuccessResponse);
   });
 
   test('Error should be saved in shared preferences when call fails', () async {
@@ -58,7 +59,8 @@ void main() {
 
     expect(responses.length, 1);
     expect(responses.first.statusCode, 400);
-    expect(responses.first.body, {'data': _mockedErrorResponse});
+    expect(responses.first.body, _mockedErrorResponse);
+
   });
 
   test('Request data should be intercepted when user calls onRequest',
